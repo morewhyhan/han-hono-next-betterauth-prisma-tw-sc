@@ -8,17 +8,9 @@ const baseUrl =
     : process.env.NEXT_PUBLIC_APP_URL!
 
 export const fetch = ky.extend({
-  hooks: {
-    afterResponse: [
-      async (_, __, response: Response) => {
-        if (response.ok) {
-          return response
-        } else {
-          throw await response.json()
-        }
-      },
-    ],
-  },
+  prefixUrl: baseUrl,
+  timeout: 60000, // 设置60秒超时
+  retry: 1, // 添加1次重试
 })
 
 export const client = hc<AppType>(baseUrl, {

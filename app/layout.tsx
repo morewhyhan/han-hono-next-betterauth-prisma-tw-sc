@@ -13,7 +13,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="zh-CN" className="dark">
+      <head>
+        {/* 引入LXGW WenKai Screen字体 */}
+        <link 
+          rel="stylesheet" 
+          href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.7.0/style.css" 
+        />
+      </head>
       <body>
         <Providers>{children}</Providers>
       </body>
